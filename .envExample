@@ -1,0 +1,151 @@
+
+# ==========================================================
+# Slack AI Onboarding Bot Environment Variables
+# ==========================================================
+# Copy this file to .env and fill in the values.
+#
+# cp .env.example .env
+#
+# Never commit your actual .env file to GitHub.
+# ==========================================================
+
+# ==========================================================
+# DATABASE CONFIGURATION
+# ==========================================================
+
+# MySQL/PostgreSQL database connection string.
+# Format Examples:
+#
+# PostgreSQL:
+# DATABASE_URL=postgresql://username:password@localhost:5432/slack_ai_bot
+#
+# MySQL:
+# DATABASE_URL=mysql://username:password@localhost:3306/slack_ai_bot
+#
+# Used to store:
+# - Slack user information
+# - AI-generated member summaries
+# - Research results
+# - Bot activity logs
+#
+DATABASE_URL=
+
+# ==========================================================
+# SLACK APP CONFIGURATION
+# ==========================================================
+
+# Slack Bot OAuth Token.
+# Starts with: xoxb-
+#
+# Used by the bot to:
+# - Read Slack events
+# - Send messages
+# - Post AI-generated summaries
+# - Access Slack workspace data
+#
+# Obtain from:
+# Slack App Dashboard → OAuth & Permissions → Bot User OAuth Token
+#
+SLACK_BOT_TOKEN=
+
+# Slack Signing Secret.
+#
+# Used to verify that incoming requests/events
+# are genuinely coming from Slack.
+#
+# Obtain from:
+# Slack App Dashboard → Basic Information → App Credentials
+#
+SLACK_SIGNING_SECRET=
+
+# Slack App-Level Token.
+# Starts with: xapp-
+#
+# Required when using Socket Mode.
+#
+# Allows the application to receive Slack events
+# without exposing a public webhook URL.
+#
+# Obtain from:
+# Slack App Dashboard → Basic Information → App-Level Tokens
+#
+SLACK_APP_TOKEN=
+
+# Private Slack Channel ID where the bot posts
+# AI-generated onboarding summaries.
+#
+# Example:
+# C08ABCDEF12
+#
+# To find:
+# Open Slack Channel → View Channel Details → Copy Channel ID
+#
+SLACK_PRIVATE_CHANNEL_ID=
+
+# ==========================================================
+# OPENAI CONFIGURATION
+# ==========================================================
+
+# OpenAI API Key.
+# Starts with: sk-
+#
+# Used to:
+# - Analyze new Slack members
+# - Generate onboarding summaries
+# - Create user insights
+# - Summarize research data
+#
+# Obtain from:
+# https://platform.openai.com/api-keys
+#
+OPENAI_API_KEY=
+
+# ==========================================================
+# COMPANY INFORMATION
+# ==========================================================
+
+# Name of your organization.
+#
+# Example:
+# COMPANY_NAME=OpenAI
+#
+# This information is injected into prompts so
+# AI-generated summaries are tailored to your company.
+#
+COMPANY_NAME=
+
+# Short description of your company's product,
+# platform, or service.
+#
+# Example:
+# COMPANY_PRODUCT=AI-powered coding assistant
+#
+# Used to personalize onboarding messages and
+# member analysis outputs.
+#
+COMPANY_PRODUCT=
+
+# ==========================================================
+# APPLICATION CONFIGURATION
+# ==========================================================
+
+# Port on which the Node.js server will run.
+#
+# Examples:
+# PORT=3000
+# PORT=8080
+#
+PORT=3000
+
+# Current application environment.
+#
+# Available values:
+# development
+# production
+# test
+#
+# Examples:
+# NODE_ENV=development
+# NODE_ENV=production
+#
+NODE_ENV=development
