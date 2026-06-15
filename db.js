@@ -24,7 +24,7 @@ pool.on('error', (err) => {
 
 })
 
-export async function initDB() {
+export async function initDatabase() {
   const client = await pool.connect(); 
   
   try{
@@ -105,3 +105,29 @@ export async function saveMemberAnalysis(memberInfo, analysis, researchData) {
         client.release();
     }
 }
+
+export async function markAsSentToSlack(analysisId) {
+    const client = await pool.connect();
+    try {
+        await client.query(
+            `UPDATE member_analyses
+         SET sent_to_slack = TRUE,
+            sent_to_slack_at = CURRENT_TIMESTAMP,
+            updated_at = CURRENT_TIMESTAMP
+         WHERE id = $1`, [analysisId]
+        );
+
+    } catch (error) {
+        console.error('[ERROR] Failed to mark as sent to Slack:', error.message);
+        throw error;
+    } finally {
+        client.release()
+    }
+}
+
+export async function closeDatabase() {
+    await pool.end();
+    console.log('[INFO] Database connection pool closed');
+}
+
+export default pool;
